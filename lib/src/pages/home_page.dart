@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qreader/src/bloc/scans_bloc.dart';
+import 'package:qreader/src/bloc/scans_bloc.dart' ;
 import 'package:qreader/src/pages/direcciones_page.dart';
 import 'package:qreader/src/pages/mapas_page.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
@@ -12,6 +14,7 @@ class HomePage  extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const String _titulo = 'APP QR ';
+  final scansBloc = new ScansBloc();
 
   int currentIndex = 0;
 
@@ -60,7 +63,8 @@ class _HomePageState extends State<HomePage> {
     if( futureString != null ){
       print ('Tenemos informacion');
       final scan = ScanModel( valor: futureString);
-      DBProvider.db.nuevoScan(scan);
+      //DBProvider.db.nuevoScan(scan);
+      scansBloc.agregarScan(scan);
     }
 
 

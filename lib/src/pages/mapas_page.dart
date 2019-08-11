@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:qreader/src/bloc/scans_bloc.dart';
 import 'package:qreader/src/providers/db_provider.dart';
 
 
 
 class MapasPage extends StatelessWidget {
+
+  final scansBloc = new ScansBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class MapasPage extends StatelessWidget {
             child: ListTile(
               leading: Icon( Icons.cloud_queue , color: Theme.of(context).primaryColor),
               title: Text( scans[i].valor),
+              subtitle: Text('ID: ${scans[i].id}'),
               trailing: Icon(Icons.keyboard_arrow_right ,  color: Colors.grey),
             ),
            )      
